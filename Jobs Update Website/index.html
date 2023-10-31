@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Style/index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        /* CSS for the grid layout */
+        .custom-container {
+            width: 80%;
+            display: flex;
+            margin: auto;
+            margin-top: 10px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0px;
+            background-color: white;
+            max-width: 70%;
+	    margin:auto;
+        }
+
+        .article {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 1em;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article img {
+            max-width: 100%;
+            height: auto;
+            align-self: center;
+        }
+
+        .article h2 {
+            font-size: 18px;
+            font-family: Open Sans, sans-serif;
+            font-weight: 600;
+        }
+
+        .article .entry-meta {
+            margin-top: 10px;
+            text-align: left;
+            color: #878787;
+        }
+
+        .latest-jobs {
+            flex: 1;
+            padding: 20px;
+            background: #f2f2f2;
+            border-radius: 5px;
+            text-align: left;
+            background-color: white;
+            max-width: 70%;
+        }
+
+        .latest-jobs h2 {
+            font-size: 24px;
+        }
+
+        .article .entry-meta .posted-on {
+            display: block;
+        }
+
+        .article .entry-meta .posted-on time {
+            font-size: 16px;
+            font-size: 85%;
+            margin-top: 0.5em;
+            line-height: 1.5;
+        }
+
+        .article .entry-summary {
+            font-size: 16px;
+            font-family: Open Sans, sans-serif;
+            font-weight: 600;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "futura md bt";
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f1f1ef;
+            line-height: 1.5;
+            font-family: Open Sans, sans-serif;
+            font-size: 17px;
+        }
+
+        header {
+            background: #fff;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+        }
+
+        header .logo {
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        header nav ul {
+            display: flex;
+        }
+
+        header nav ul li a {
+            display: inline-block;
+            color: #000;
+            padding: 5px 0;
+            margin: 0 10px;
+            border: 3px solid transparent;
+            text-transform: uppercase;
+            transition: 0.2s;
+        }
+
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            border-bottom-color: dodgerblue;
+        }
+
+     .latest-jobs ul li  a:hover,
+        
+        .latest-jobs ul li a.active {
+            border-bottom-color: dodgerblue;
+            color: #000;
+        }
+        .hamburger {
+            cursor: pointer;
+            display: none;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            margin: 5px 0;
+            background: #000;
+        }
+
+        
+
+/* CSS for the grid layout */
+
+/* ... (your existing CSS rules) ... */
+
+@media only screen and (max-width: 900px) {
+    header {
+        padding: 0 30px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .hamburger {
+        display: block;
+    }
+
+    header nav {
+        position: absolute;
+        width: 100%;
+        left: -100%;
+        top: 70px;
+        width: 100%;
+        background: #fff;
+        padding: 30px;
+        transition: 0.3s;
+    }
+
+    header #nav_check:checked ~ nav {
+        left: 0;
+    }
+
+    header nav ul {
+        display: block;
+    }
+
+    header nav ul li a {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Styles for screens with a maximum width of 768px */
+    .custom-container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .grid-container{
+    padding: 10px;
+    margin: auto;
+    max-width: 100%;
+}
+    .grid-container {
+        grid-template-columns: 1fr; /* Display articles in a single column */
+    }
+
+    .article {
+        margin: 1em 0; /* Add space between articles */
+    }
+
+    .latest-jobs {
+        padding: 20px;
+    }
+
+    header {
+        padding: 0 20px; /* Adjust header padding for smaller screens */
+    }
+
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    a, body, button, input, select, textarea {
+        transition: all 0s ease-in-out;
+    }
+
+    .inside-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .site-header .header-widget {
+        margin-top: 1.5em;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .site-content {
+        flex-direction: column;
+    }
+
+    .grid-container .site-content .content-area {
+        width: auto;
+    }
+
+    .is-left-sidebar.sidebar,
+    .is-right-sidebar.sidebar {
+        width: auto;
+        order: initial;
+    }
+
+    .is-left-sidebar+.is-right-sidebar .inside-right-sidebar {
+        margin-top: 0;
+    }
+
+    .both-left .inside-left-sidebar,
+    .both-left .inside-right-sidebar,
+    .both-right .inside-left-sidebar,
+    .both-right .inside-right-sidebar {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    #main {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    body:not(.no-sidebar) #main {
+        margin-bottom: 0;
+    }
+    .latest-jobs {
+    flex: 1;
+    padding: 30px;
+    background: #f2f2f2;
+    border-radius: 5px;
+    text-align: left;
+    background-color: white;
+     max-width: 100%; 
+}
+.latest-jobs ul li  a:hover,
+        
+        .latest-jobs ul li a.active {
+            border-bottom-color: dodgerblue;
+            color: #000;
+        }
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "futura md bt";
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+    .alignleft, .alignright {
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .comment .children {
+        padding-left: 10px;
+        margin-left: 0;
+    }
+
+    .entry-meta {
+        font-size: inherit;
+    }
+
+    .entry-meta a {
+        line-height: 1.8em;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Styles for screens with a minimum width of 769px and a maximum width of 1024px (tablets) */
+
+    .custom-container {
+        width: 90%; /* Adjust the width for tablets */
+    }
+
+    header {
+        padding: 0 30px; /* Adjust header padding for tablets */
+    }
+
+    .latest-jobs {
+        padding: 15px; /* Adjust padding for "Latest Jobs" section on tablets */
+    }
+
+    header .logo {
+        font-size: 28px; /* Make the logo slightly smaller for tablets */
+    }
+
+    header nav ul li a {
+        padding: 5px 0;
+        margin: 0 5px; /* Reduce margin on tablet screens to fit more items */
+    }
+}
+@media (min-width: 1025px) {
+    /* Styles for screens with a minimum width of 1025px (desktop or larger screens) */
+    /* Add your CSS rules for larger screens here */
+    
+    .custom-container {
+        width: 80%; /* Adjust the width for larger screens */
+    }
+
+    header {
+        padding: 0 50px; /* Restore header padding for larger screens */
+    }
+
+
+    /* Paganation  */
+    .pagination { 
+    text-align: center; 
+    margin-top: 2rem; 
+} 
+  
+.pagination a { 
+    color: #007BFF; 
+    padding: 8px 16px; 
+    text-decoration: none; 
+    border: 1px solid #007BFF; 
+    margin: 0 5px; 
+    border-radius: 4px; 
+} 
+  
+.pagination a:hover { 
+    background-color: #007BFF; 
+    color: white; 
+} 
+  
+.pagination .active { 
+    background-color: #007BFF; 
+    color: white; 
+} 
+  
+.card-container { 
+    display: grid; 
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; 
+} 
+  
+.card { 
+    border: 1px solid #ddd; 
+    padding: 20px; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.1); 
+    background-color: #fff; 
+    text-align: center; 
+} 
+  
+.card img { 
+    max-width: 100%; 
+    height: auto; 
+    margin-bottom: 10px; 
+    border-radius: 10px; 
+} 
+  
+h3 { 
+    margin-top: 10px; 
+    font-size: 18px; 
+    text-transform: capitalize; 
+} 
+  
+h1 { 
+    text-align: center; 
+    margin: 2rem; 
+} 
+  
+p { 
+    font-size: 14px; 
+} 
+  
+#page-numbers { 
+    margin-top: 20px; 
+    font-size: 16px; 
+}
+    </style>
+
+    <title>Hireit Pro</title>
+</head>
+<body>
+    <header id="Myheader">
+
+    </header>
+
+    <div class="custom-container">
+        <!-- Grid container for articles -->
+        <div class="grid-container">
+            <!-- Articles will be dynamically added here using JavaScript -->
+        </div>
+
+        <!-- "Latest Jobs" section -->
+        <!-- "Latest Jobs" section -->
+<div class="latest-jobs">
+    <h2>Latest Jobs</h2>
+    <ul class="job-list">
+        <li>
+            <a href="https://kickcharm.com/siemens-hiring-any-graduate-freshers/">Siemens Hiring Any Graduate Freshers for Process Associate</a>
+        </li>
+        <li>
+            <a href="https://kickcharm.com/keysight-hiring-any-graduates-freshers/">Keysight Hiring Any Graduates Freshers for IT Engineer</a>
+        </li>
+        <li>
+            <a href="https://kickcharm.com/testbook-recruitment-2023-hiring-freshers/">Testbook Recruitment 2023 Hiring Freshers for Analyst | Work From Home</a>
+        </li>
+        <li>
+            <a href="https://kickcharm.com/moodys-hiring-graduate-freshers/">Moody’s Hiring Graduate Freshers for QA Analyst (Automation)</a>
+        </li>
+        <li>
+            <a href="https://kickcharm.com/tcs-nqt-2022-registration-started/">TCS NQT 2023 Registration Started with Various Roles; Freshers Candidates Apply Now</a>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+
+    <div class="pagination" id="pagination"> 
+        <a href="#" id="prev">Previous</a> 
+        <a href="#" class="page-link" data-page="1">1</a> 
+        <a href="#" class="page-link" data-page="2">2</a> 
+        <a href="#" class="page-link" data-page="3">3</a> 
+        <a href="#" id="next">Next</a> 
+        <p id="page-numbers"> </p> 
+    </div> 
+
+    <footer id="myfooter">
+
+    </footer>
+</body>
+</html>
+
+<script type="module">
+    import { navbar, footer } from "../Components/navbar.js"
+    let nav = document.getElementById("Myheader");
+    nav.innerHTML = navbar();
+    let foot = document.getElementById("myfooter");
+    foot.innerHTML = footer();
+
+    function addArticle(role, title, date, imageSrc, link) {
+        const newArticle = document.createElement('article');
+        newArticle.classList.add('article'); // Add the article class
+
+        const formattedDate = new Date(date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+        });
+
+        newArticle.innerHTML = `
+        <div class="card">
+            <div class="post-image">
+                <a href="${link}">
+                    <img src="${imageSrc}" alt="${title}" decoding="async" itemprop="image">
+                </a>
+            </div>
+            <div class="entry-summary" itemprop="text">${title }</div>
+            <div class="entry-meta">
+                <div class="posted-on"><time class="entry-date published" datetime="${date}" itemprop="datePublished">${formattedDate}</time></div>
+            </div>
+        </div>
+    ` 
+
+        const gridContainer = document.querySelector('.grid-container');
+        gridContainer.appendChild(newArticle);
+    }
+
+
+    const articleData = [
+        {
+            role: 'TCS NQT 2023 Registration Started with Various Roles; Freshers Candidates Apply Now',
+            title: 'Siemens Hiring Any Graduate Freshers for Process Associate 1',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Siemens Hiring Any Graduate Freshers for Process Associate 2',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'Software Engineer',
+            title: 'Siemens Hiring Any Graduate Freshers for Process Associate 3',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Siemens Hiring Any Graduate Freshers for Process Associate 4',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'TCS NQT 2023 Registration Started with Various Roles; Freshers Candidates Apply Now',
+            title: 'Siemens Hiring Any Graduate Freshers for Process Associate 5',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 6',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'Software Engineer',
+            title: 'New Job Opening 7',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 8',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'TCS NQT 2023 Registration Started with Various Roles; Freshers Candidates Apply Now',
+            title: 'New Job Opening 9',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 10',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'Software Engineer',
+            title: 'New Job Opening 11',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 12',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+                {
+            role: 'TCS NQT 2023 Registration Started with Various Roles; Freshers Candidates Apply Now',
+            title: 'New Job Opening 13',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 14',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'Software Engineer',
+            title: 'New Job Opening 15',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 16',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'TCS NQT 2023 Registration Started with Various Roles; Freshers Candidates Apply Now',
+            title: 'New Job Opening 17',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 18',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'Software Engineer',
+            title: 'New Job Opening 19',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 20',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'TCS NQT 2023 Registration Started with Various Roles; Freshers Candidates Apply Now',
+            title: 'New Job Opening 21',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 22',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+        {
+            role: 'Software Engineer',
+            title: 'New Job Opening 23',
+            date: '2023-10-24T12:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+        },
+        {
+            role: 'Data Scientist',
+            title: 'Data Science Position Available 24',
+            date: '2023-10-25T14:00:00+00:00',
+            imageSrc: 'https://kickcharm.com/wp-content/uploads/2022/03/TCS-NQT-2022-Registration-Started-Apply-Link-is-Open.jpg',
+            link: 'https://example.com/article-link2',
+        },
+    ];
+
+     /* Add articles to the grid */
+    articleData.forEach((data) => {
+        addArticle(data.role, data.title, data.date, data.imageSrc, data.link);
+    });
+
+   /* pagenation */
+
+   /*  Number of cards to show per page  */
+const cardsPerPage = 10; 
+const dataContainer = document.getElementById('grid-container'); 
+const pagination = document.getElementById('pagination'); 
+const prevButton = document.getElementById('prev'); 
+const nextButton = document.getElementById('next'); 
+const pageNumbers = document.getElementById('page-numbers'); 
+const pageLinks = document.querySelectorAll('.page-link'); 
+  
+/* const cards =  
+    Array.from(dataContainer.getElementsByClassName('card'));  */
+  const cards = articleData;
+ /* Calculate the total number of pages  */
+const totalPages = Math.ceil(cards.length / cardsPerPage); 
+let currentPage = 1; 
+  
+ /* Function to display cards for a specific page  */
+function displayPage(page) { 
+    const startIndex = (page - 1) * cardsPerPage; 
+    const endIndex = startIndex + cardsPerPage; 
+    cards.forEach((card, index) => { 
+        if (index >= startIndex && index < endIndex) { 
+            card.style.display = 'block'; 
+        } else { 
+            card.style.display = 'none'; 
+        } 
+    }); 
+} 
+  
+ /* Function to update pagination buttons and page numbers  */
+function updatePagination() { 
+    pageNumbers.textContent =  
+        `Page ${currentPage} of ${totalPages}`; 
+    prevButton.disabled = currentPage === 1; 
+    nextButton.disabled = currentPage === totalPages; 
+    pageLinks.forEach((link) => { 
+        const page = parseInt(link.getAttribute('data-page')); 
+        link.classList.toggle('active', page === currentPage); 
+    }); 
+} 
+  
+ /* Event listener for "Previous" button  */
+prevButton.addEventListener('click', () => { 
+    if (currentPage > 1) { 
+        currentPage--; 
+        displayPage(currentPage); 
+        updatePagination(); 
+    } 
+}); 
+  
+ /* Event listener for "Next" button  */
+nextButton.addEventListener('click', () => { 
+    if (currentPage < totalPages) { 
+        currentPage++; 
+        displayPage(currentPage); 
+        updatePagination(); 
+    } 
+}); 
+  
+/* // Event listener for page number buttons  */
+pageLinks.forEach((link) => { 
+    link.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        const page = parseInt(link.getAttribute('data-page')); 
+        if (page !== currentPage) { 
+            currentPage = page; 
+            displayPage(currentPage); 
+            updatePagination(); 
+        } 
+    }); 
+}); 
+  
+/* // Initial page load  */
+displayPage(currentPage); 
+updatePagination();
+
+</script>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us - Job Updates Pro</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="/Style/index.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+  <style>
+
+
+        h1 {
+            background-color: #24262b;
+             padding: 70px 0;
+             color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container1 {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f1f1ef;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 767px) {
+            .footer-col {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 574px) {
+            .footer-col {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="Myheader">
+        
+    </header>
+    <h1 id="hk">About Us</h1>
+    <div class="container1">
+        <h2>Our Mission</h2>
+        <p>Our mission is clear: to be the premier destination for job seekers and professionals seeking career advancement. We strive to provide a user-friendly platform that delivers real-time job listings, educational opportunities, and career development resources, all in one place.</p>
+
+        <h2>What Sets Us Apart</h2>
+        <ul>
+            <li><strong>Comprehensive Job Listings:</strong> We are dedicated to offering a diverse range of job opportunities, from entry-level positions for fresh graduates to senior roles for seasoned professionals.</li>
+            <li><strong>Educational Support:</strong> Job Updates Pro goes beyond job listings by offering a variety of courses and scholarships to help individuals enhance their skills and knowledge.</li>
+            <li><strong>Personalization:</strong> We understand that every job seeker has unique needs and preferences. That's why we provide personalized recommendations based on your qualifications and interests.</li>
+            <li><strong>Timely Updates:</strong> Our commitment to keeping you informed is unwavering. We continually update our listings to ensure you have access to the latest job openings and education resources.</li>
+        </ul>
+
+        <h2>Our Team</h2>
+        <p>Job Updates Pro is managed by a team of professionals who are passionate about helping individuals navigate the ever-evolving job market. Our team includes experts in career counseling, content creation, web development, and data analytics. We are dedicated to delivering a user-friendly and informative experience to our users.</p>
+    </div>
+    
+       <footer id="myfooter">
+
+       </footer>
+</body>
+</html>
+<script type="module">
+import {navbar,footer} from "../Components/navbar.js"
+let nav = document.getElementById("Myheader");
+nav.innerHTML =  navbar();
+let foot = document.getElementById("myfooter");
+foot.innerHTML = footer();
+</script>
